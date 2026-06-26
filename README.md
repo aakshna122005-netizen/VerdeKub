@@ -1,7 +1,7 @@
-# EcoKube AI 🌿
+# VerdeKube AI 🌿
 ### Intelligent Carbon-Aware Container Governance Platform
 
-EcoKube AI is a lightweight cloud-native governance platform that continuously monitors compute resource utilization, calculates carbon emissions, flags idle/leakage container states using machine learning (Isolation Forest), and automatically transitions workloads into a low-power `STANDBY` state to mitigate digital carbon waste.
+VerdeKube AI is a lightweight cloud-native governance platform that continuously monitors compute resource utilization, calculates carbon emissions, flags idle/leakage container states using machine learning (Isolation Forest), and automatically transitions workloads into a low-power `STANDBY` state to mitigate digital carbon waste.
 
 ---
 
@@ -29,7 +29,7 @@ EcoKube AI is a lightweight cloud-native governance platform that continuously m
 ## 📂 Folder Structure
 
 ```
-c:\Users\meaak\OneDrive\Desktop\EckoKube-AI\
+c:\Users\meaak\OneDrive\Desktop\VerdeKube-AI\
 ├── backend/
 │   ├── app/
 │   │   ├── config.py             # Config & Dotenv loading

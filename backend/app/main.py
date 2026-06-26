@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
     # Cleanup happens here on shutdown (nothing specific to do for daemon thread)
 
 app = FastAPI(
-    title="EcoKube AI API",
+    title="VerdeKube AI API",
     description="Intelligent Carbon-Aware Container Governance Platform Backend",
     version="1.0.0",
     lifespan=lifespan
@@ -53,6 +53,6 @@ app.include_router(agent_ingest.router)
 @app.get("/")
 def read_root():
     return {
-        "message": "Welcome to EcoKube AI Platform",
+        "message": "Welcome to VerdeKube AI Platform",
         "documentation": "/docs"
     }

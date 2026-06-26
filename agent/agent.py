@@ -12,7 +12,7 @@ from sklearn.ensemble import IsolationForest
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-logger = logging.getLogger("EcoKubeAgent")
+logger = logging.getLogger("VerdeKubeAgent")
 
 # Configuration (read from environment or fallbacks)
 SERVER_URL = os.getenv("ECOKUBE_SERVER_URL", "http://localhost:8000")
@@ -241,7 +241,7 @@ def run_agent_monitoring_tick():
         logger.error(f"Failed to submit telemetry report to central server: {e}")
 
 def main():
-    logger.info(f"Starting EcoKube local agent daemon...")
+    logger.info(f"Starting VerdeKube local agent daemon...")
     logger.info(f"Connecting to Central Server: {SERVER_URL}")
     
     # Attempt initial registration, loop until successful

@@ -52,7 +52,7 @@ export const App: React.FC = () => {
       setError(null);
     } catch (err) {
       console.error('Error fetching dashboard datasets', err);
-      setError('Could not connect to the EcoKube backend. Please make sure the backend is running.');
+      setError('Could not connect to the VerdeKube backend. Please make sure the backend is running.');
     } finally {
       setLoading(false);
       setIsRefreshing(false);
@@ -88,7 +88,7 @@ export const App: React.FC = () => {
     return (
       <div className="flex h-screen items-center justify-center bg-darkBg text-slate-100 flex-col gap-4">
         <div className="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
-        <span className="text-sm font-semibold tracking-wide text-slate-400">Loading EcoKube Governance Dashboard...</span>
+        <span className="text-sm font-semibold tracking-wide text-slate-400">Loading VerdeKube Governance Dashboard...</span>
       </div>
     );
   }

@@ -107,14 +107,14 @@ def generate_pdf_report(db: Session) -> io.BytesIO:
     story = []
     
     # --- Page 1: Header & Executive Summary ---
-    story.append(Paragraph("EcoKube AI", title_style))
+    story.append(Paragraph("VerdeKube AI", title_style))
     story.append(Paragraph("Intelligent Carbon-Aware Container Governance Report", subtitle_style))
     story.append(Spacer(1, 10))
     
     story.append(Paragraph("Executive Summary", h1_style))
     exec_summary_text = (
-        "This sustainability audit report is generated automatically by the EcoKube AI governance platform. "
-        "EcoKube AI continuously monitors compute resource footprints, evaluates workload efficiency using machine learning anomaly detection, "
+        "This sustainability audit report is generated automatically by the VerdeKube AI governance platform. "
+        "VerdeKube AI continuously monitors compute resource footprints, evaluates workload efficiency using machine learning anomaly detection, "
         "and proactively throttles or downscales underutilized services to reduce active carbon leakages."
     )
     story.append(Paragraph(exec_summary_text, body_style))
@@ -148,7 +148,7 @@ def generate_pdf_report(db: Session) -> io.BytesIO:
     analysis_text = (
         "Containerized applications run with varying compute demands. When workloads drop below 15% CPU utilization, "
         "the physical hardware continues drawing base power, resulting in a high carbon footprint per instruction executed. "
-        "EcoKube AI identifies these states as Carbon Leakages. By putting these pods into a STANDBY state or applying downscaling policies, "
+        "VerdeKube AI identifies these states as Carbon Leakages. By putting these pods into a STANDBY state or applying downscaling policies, "
         "the idle carbon footprint is mitigated by up to 95%."
     )
     story.append(Paragraph(analysis_text, body_style))

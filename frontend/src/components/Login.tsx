@@ -32,7 +32,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="bg-emerald-500/10 p-3 rounded-2xl border border-emerald-500/20 mb-4 animate-pulse">
             <Leaf className="w-8 h-8 text-emerald-400" />
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">EcoKube AI 🌿</h1>
+          <h1 className="text-2xl font-bold text-white tracking-tight">VerdeKube AI 🌿</h1>
           <p className="text-slate-400 text-sm mt-2 text-center">
             Intelligent Carbon-Aware Container Governance Platform
           </p>

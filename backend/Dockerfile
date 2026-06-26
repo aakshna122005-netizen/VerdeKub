@@ -14,7 +14,7 @@ COPY . .
 
 EXPOSE 8000
 
-ENV DATABASE_URL=sqlite:///./ecokube.db
+ENV DATABASE_URL=sqlite:///./verdekube.db
 ENV HOST=0.0.0.0
 ENV PORT=8000
 ENV ENV=production

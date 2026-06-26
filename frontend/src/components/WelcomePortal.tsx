@@ -66,7 +66,7 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
           <div>
             <span className="font-black text-xl tracking-tight"
               style={{ background: 'linear-gradient(to right, #c4b5fd, #67e8f9, #fb923c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              EckoKube AI
+              VerdeKube AI
             </span>
             <div className="text-[9px] font-bold uppercase tracking-[0.2em] mt-0.5"
               style={{ color: '#a78bfa' }}>
@@ -108,7 +108,7 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
           </div>
 
           <p className="text-base leading-relaxed max-w-lg" style={{ color: '#94a3b8' }}>
-            EcoKube AI uses a local Isolation Forest ML model to continuously detect idle workloads and automatically throttle containers — saving physical energy and cutting greenhouse emissions.
+            VerdeKube AI uses a local Isolation Forest ML model to continuously detect idle workloads and automatically throttle containers — saving physical energy and cutting greenhouse emissions.
           </p>
 
           {/* CTA Button */}
@@ -299,7 +299,7 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
       {/* ── Footer ── */}
       <footer className="relative z-10 w-full max-w-7xl mx-auto px-8 py-5 border-t flex justify-between items-center text-xs"
         style={{ borderColor: 'rgba(139,92,246,0.1)', color: '#475569' }}>
-        <span>&copy; 2026 EckoKube AI — Built for energy-efficient cluster orchestration.</span>
+        <span>&copy; 2026 VerdeKube AI — Built for energy-efficient cluster orchestration.</span>
         <div className="flex gap-6">
           <a href="#github" className="transition hover:text-violet-400">Source Code</a>
           <a href="#documentation" className="transition hover:text-cyan-400">ML Methodology</a>

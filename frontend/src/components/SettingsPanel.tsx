@@ -157,7 +157,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ role }) => {
                 <h3 className="font-bold text-white text-base">Observability Metrics</h3>
               </div>
               <p className="text-xs text-slate-400 leading-relaxed mb-4">
-                EcoKube AI generates live metrics for standard cloud native monitoring scrapers. You can directly plug this endpoint into a Prometheus instance to scrape live container health.
+                VerdeKube AI generates live metrics for standard cloud native monitoring scrapers. You can directly plug this endpoint into a Prometheus instance to scrape live container health.
               </p>
 
               <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-2">
@@ -208,7 +208,7 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ role }) => {
                   className="w-full mt-2.5 flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-slate-950 font-bold text-xs rounded-xl py-2.5 transition-all text-center"
                 >
                   <Download size={14} />
-                  Download EckoKubeAgent.exe
+                  Download VerdeKubeAgent.exe
                 </a>
               </div>
 

@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.models import Container, Event, Metric
 from app.services.ml_detector import detector
 
-logger = logging.getLogger("EcoKubeGovernance")
+logger = logging.getLogger("VerdeKubeGovernance")
 
 def get_local_docker_client():
     try:

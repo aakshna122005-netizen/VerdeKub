@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, role,
           <Leaf size={22} className="animate-pulse" />
         </div>
         <div>
-          <h1 className="font-bold text-lg text-white leading-tight">EcoKube AI</h1>
+          <h1 className="font-bold text-lg text-white leading-tight">VerdeKube AI</h1>
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider bg-emerald-950/40 border border-emerald-500/20 px-2 py-0.5 rounded-full scale-90 origin-left">
               LIVE DATA MODE

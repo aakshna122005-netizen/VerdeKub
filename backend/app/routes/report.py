@@ -13,5 +13,5 @@ def download_report(db: Session = Depends(get_db)):
     return StreamingResponse(
         pdf_buffer,
         media_type="application/pdf",
-        headers={"Content-Disposition": "attachment; filename=ecokube_sustainability_report.pdf"}
+        headers={"Content-Disposition": "attachment; filename=verdekube_sustainability_report.pdf"}
     )

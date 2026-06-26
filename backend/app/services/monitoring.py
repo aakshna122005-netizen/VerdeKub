@@ -9,7 +9,7 @@ from app.services.governance import evaluate_and_govern, calculate_carbon
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("EcoKubeLiveMonitoring")
+logger = logging.getLogger("VerdeKubeLiveMonitoring")
 
 # Try to import docker, handle fallback silently if not installed
 try:

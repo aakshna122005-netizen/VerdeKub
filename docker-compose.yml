@@ -10,7 +10,7 @@ services:
     volumes:
       - sqlite_data:/app
     environment:
-      - DATABASE_URL=sqlite:///./ecokube.db
+      - DATABASE_URL=sqlite:///./verdekube.db
       - HOST=0.0.0.0
       - PORT=8000
       - ENV=production

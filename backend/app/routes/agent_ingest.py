@@ -13,11 +13,11 @@ def download_agent(format: str = "exe"):
     current_dir = os.path.dirname(os.path.abspath(__file__))
     
     if format == "exe":
-        exe_path = os.path.abspath(os.path.join(current_dir, "../../../agent/dist/EckoKubeAgent.exe"))
+        exe_path = os.path.abspath(os.path.join(current_dir, "../../../agent/dist/VerdeKubeAgent.exe"))
         if os.path.exists(exe_path):
             return FileResponse(
                 path=exe_path,
-                filename="EckoKubeAgent.exe",
+                filename="VerdeKubeAgent.exe",
                 media_type="application/octet-stream"
             )
             
