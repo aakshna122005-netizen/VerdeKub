@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: verdekube-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    envVars:
+      - key: RUN_LOCAL_MONITOR
+        value: "true"
