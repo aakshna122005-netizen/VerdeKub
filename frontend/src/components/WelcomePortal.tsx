@@ -32,6 +32,31 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
       style={{ background: 'linear-gradient(135deg, #0a0014 0%, #0d0028 40%, #060020 70%, #0a0014 100%)' }}
     >
 
+      {/* Custom Animations and Keyframes */}
+      <style>{`
+        @keyframes float-gentle {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse-glow-vivid {
+          0%, 100% { opacity: 0.18; filter: blur(40px); transform: scale(1); }
+          50% { opacity: 0.38; filter: blur(55px); transform: scale(1.1); }
+        }
+        @keyframes pulse-slow-button {
+          0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(139,92,246,0.5), 0 0 80px rgba(6,182,212,0.2); }
+          50% { transform: scale(1.02); box-shadow: 0 0 55px rgba(139,92,246,0.65), 0 0 95px rgba(6,182,212,0.3); }
+        }
+        .animate-float {
+          animation: float-gentle 6s ease-in-out infinite;
+        }
+        .animate-glow-pulse {
+          animation: pulse-glow-vivid 8s ease-in-out infinite;
+        }
+        .animate-pulse-button {
+          animation: pulse-slow-button 4s ease-in-out infinite;
+        }
+      `}</style>
+
       {/* ── Vivid Background Blobs ── */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Main violet blob */}
@@ -78,7 +103,7 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
         <div className="flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-bold"
           style={{ background: 'rgba(139,92,246,0.1)', borderColor: 'rgba(139,92,246,0.3)', color: '#c4b5fd', boxShadow: '0 0 16px rgba(139,92,246,0.2)' }}>
           <span className="w-2 h-2 rounded-full animate-ping" style={{ background: '#a78bfa' }} />
-          Active Nodes: {nodes}
+          ⚡ AI Optimizing {nodes} Pods
         </div>
       </header>
 
@@ -107,51 +132,80 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
             </h1>
           </div>
 
-          <p className="text-base leading-relaxed max-w-lg" style={{ color: '#94a3b8' }}>
-            VerdeKube AI uses a local Isolation Forest ML model to continuously detect idle workloads and automatically throttle containers — saving physical energy and cutting greenhouse emissions.
+          <p className="text-base leading-relaxed max-w-lg" style={{ color: '#cbd5e1' }}>
+            VerdeKube AI uses machine learning to detect idle cloud workloads in real-time. It automatically throttles resource usage to stop energy waste and cut greenhouse emissions.
           </p>
 
           {/* CTA Button */}
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
             <button
               onClick={handleStart}
-              className="group relative inline-flex items-center justify-center gap-3 font-extrabold text-sm rounded-2xl px-9 py-4 transition-all duration-300 overflow-hidden"
+              className="group relative inline-flex items-center justify-center gap-3 font-extrabold text-sm rounded-2xl px-9 py-4 transition-all duration-300 overflow-hidden animate-pulse-button"
               style={{
                 background: 'linear-gradient(135deg, #7c3aed 0%, #0891b2 60%, #f97316 100%)',
-                boxShadow: '0 0 40px rgba(139,92,246,0.5), 0 0 80px rgba(6,182,212,0.2)',
                 color: 'white',
               }}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 60px rgba(139,92,246,0.7), 0 0 100px rgba(6,182,212,0.3)')}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 0 40px rgba(139,92,246,0.5), 0 0 80px rgba(6,182,212,0.2)')}
+              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 0 65px rgba(139,92,246,0.85), 0 0 110px rgba(6,182,212,0.45)')}
             >
               {/* Shimmer overlay */}
               <span className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)' }} />
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)' }} />
               Enter Governance Control Center
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
             </button>
           </div>
 
-          {/* Live Metric Counters */}
-          <div className="grid grid-cols-3 gap-6 pt-6 border-t" style={{ borderColor: 'rgba(139,92,246,0.15)' }}>
-            <div>
-              <div className="text-3xl font-black font-mono" style={{ color: '#a78bfa' }}>{carbonSaved}g</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest mt-1" style={{ color: '#64748b' }}>CO₂ Saved</div>
+          {/* Live Metric Counters (Glowing Card Layout) */}
+          <div className="grid grid-cols-3 gap-4 pt-6 border-t" style={{ borderColor: 'rgba(139,92,246,0.15)' }}>
+            
+            {/* Card 1: CO2 Saved */}
+            <div className="flex flex-col p-4 rounded-2xl border text-center transition-all hover:scale-105 duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(139,92,246,0.06), rgba(139,92,246,0.02))',
+                borderColor: 'rgba(139,92,246,0.25)',
+                boxShadow: '0 4px 20px rgba(139,92,246,0.08), inset 0 0 12px rgba(139,92,246,0.05)'
+              }}>
+              <div className="flex justify-center mb-1 text-violet-400">
+                <Leaf className="w-5 h-5 animate-pulse" />
+              </div>
+              <div className="text-2xl font-black font-mono" style={{ color: '#c4b5fd' }}>{carbonSaved}g</div>
+              <div className="text-[9px] font-extrabold uppercase tracking-wider mt-1 text-slate-400">CO₂ Saved</div>
             </div>
-            <div>
-              <div className="text-3xl font-black font-mono" style={{ color: '#67e8f9' }}>100%</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest mt-1" style={{ color: '#64748b' }}>Auto-Pilot</div>
+
+            {/* Card 2: Autopilot */}
+            <div className="flex flex-col p-4 rounded-2xl border text-center transition-all hover:scale-105 duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(6,182,212,0.06), rgba(6,182,212,0.02))',
+                borderColor: 'rgba(6,182,212,0.25)',
+                boxShadow: '0 4px 20px rgba(6,182,212,0.08), inset 0 0 12px rgba(6,182,212,0.05)'
+              }}>
+              <div className="flex justify-center mb-1 text-cyan-400">
+                <Zap className="w-5 h-5" />
+              </div>
+              <div className="text-2xl font-black font-mono" style={{ color: '#67e8f9' }}>100%</div>
+              <div className="text-[9px] font-extrabold uppercase tracking-wider mt-1 text-slate-400">Autopilot</div>
             </div>
-            <div>
-              <div className="text-3xl font-black font-mono" style={{ color: '#fb923c' }}>5s</div>
-              <div className="text-[10px] font-bold uppercase tracking-widest mt-1" style={{ color: '#64748b' }}>Scan Interval</div>
+
+            {/* Card 3: Scan Interval */}
+            <div className="flex flex-col p-4 rounded-2xl border text-center transition-all hover:scale-105 duration-300"
+              style={{
+                background: 'linear-gradient(135deg, rgba(251,146,60,0.06), rgba(251,146,60,0.02))',
+                borderColor: 'rgba(251,146,60,0.25)',
+                boxShadow: '0 4px 20px rgba(251,146,60,0.08), inset 0 0 12px rgba(251,146,60,0.05)'
+              }}>
+              <div className="flex justify-center mb-1 text-orange-400">
+                <Activity className="w-5 h-5" />
+              </div>
+              <div className="text-2xl font-black font-mono" style={{ color: '#fb923c' }}>5 sec</div>
+              <div className="text-[9px] font-extrabold uppercase tracking-wider mt-1 text-slate-400">Scan Interval</div>
             </div>
+
           </div>
         </div>
 
         {/* Right Column: 3D Cube with Network Lines and AI Nodes */}
         <div className="lg:col-span-6 flex justify-center items-center py-8">
-          <div className="relative w-[480px] h-[480px] flex items-center justify-center" style={{ perspective: '1200px' }}>
+          <div className="relative w-[480px] h-[480px] flex items-center justify-center animate-float" style={{ perspective: '1200px' }}>
 
             {/* ── Animated Network Lines (SVG) ── */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60" viewBox="0 0 480 480">
@@ -166,9 +220,13 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
               <path d="M 100 380 C 150 420, 320 430, 380 360" fill="none" stroke="rgba(139,92,246,0.25)" strokeWidth="1.5" strokeDasharray="8,8" className="animate-dash" style={{ strokeDashoffset: 100, animation: 'dash 15s linear infinite' }} />
             </svg>
 
-            {/* Outer glow */}
-            <div className="absolute w-96 h-96 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+            {/* Soft Blue Glow and Outer Rim Light behind the cube */}
+            <div className="absolute w-[300px] h-[300px] rounded-full animate-glow-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(6,182,212,0.3) 0%, rgba(139,92,246,0.15) 50%, transparent 75%)',
+                boxShadow: '0 0 80px rgba(6,182,212,0.35), 0 0 140px rgba(139,92,246,0.2)',
+                mixBlendMode: 'screen',
+              }} />
 
             {/* Orbit Ring 1 — violet */}
             <div className="absolute w-[360px] h-[360px] rounded-full border animate-spin"
@@ -178,8 +236,26 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
             <div className="absolute w-[320px] h-[320px] rounded-full border animate-spin"
               style={{ borderColor: 'rgba(6,182,212,0.18)', transform: 'rotateX(60deg) rotateY(-30deg)', animationDuration: '9s', animationDirection: 'reverse' }} />
 
-            {/* ── Floating AI Nodes ── */}
-            {/* Node 1: AI Anomaly */}
+            {/* ── Floating AI Nodes with Hierarchy ── */}
+            
+            {/* Node 1: CO2 Saved (MOST IMPORTANT - 20% LARGER + GLOW) */}
+            <div className="absolute z-20 flex items-center gap-2.5 px-4 py-2.5 rounded-2xl border text-[11px] font-black font-mono animate-bounce"
+              style={{
+                bottom: '95px', right: '15px',
+                background: 'linear-gradient(135deg, rgba(35, 12, 5, 0.95), rgba(20, 5, 2, 0.95))',
+                borderColor: 'rgba(251, 146, 60, 0.8)',
+                boxShadow: '0 0 25px rgba(251, 146, 60, 0.6), inset 0 0 10px rgba(251, 146, 60, 0.2)',
+                animationDuration: '4.5s',
+                animationDelay: '0.5s'
+              }}>
+              <Leaf className="w-4 h-4 text-orange-400 animate-pulse" />
+              <div className="flex flex-col items-start leading-none">
+                <span className="text-[8px] text-orange-300 font-bold uppercase tracking-wider">KPI GOAL</span>
+                <span className="text-white mt-0.5">CO2_SAVED: +128g</span>
+              </div>
+            </div>
+
+            {/* Node 2: AI Anomaly */}
             <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
               style={{
                 top: '90px', left: '30px',
@@ -192,7 +268,7 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
               ML_ANOMALY: ACTIVE
             </div>
 
-            {/* Node 2: Eco Governor */}
+            {/* Node 3: Eco Governor */}
             <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
               style={{
                 top: '70px', right: '20px',
@@ -206,31 +282,14 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
               GOVERNOR: ECO
             </div>
 
-            {/* Node 3: Carbon Saved */}
-            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
-              style={{
-                bottom: '80px', right: '30px',
-                background: 'rgba(30, 10, 5, 0.85)',
-                borderColor: 'rgba(251, 146, 60, 0.6)',
-                boxShadow: '0 0 15px rgba(251, 146, 60, 0.4)',
-                animationDuration: '4.5s',
-                animationDelay: '0.5s'
-              }}>
-              <Leaf className="w-3 h-3 text-orange-400" />
-              CO2_SAVED: +128g
-            </div>
-
-            {/* Node 4: Node Health */}
-            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
+            {/* Node 4: Node Health (LEAST IMPORTANT - SUBTLE) */}
+            <div className="absolute z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-[9px] font-semibold font-mono opacity-50 hover:opacity-100 transition-opacity duration-300"
               style={{
                 bottom: '60px', left: '40px',
-                background: 'rgba(5, 20, 10, 0.85)',
-                borderColor: 'rgba(52, 211, 153, 0.6)',
-                boxShadow: '0 0 15px rgba(52, 211, 153, 0.4)',
-                animationDuration: '3.8s',
-                animationDelay: '1.5s'
+                background: 'rgba(5, 15, 8, 0.6)',
+                borderColor: 'rgba(52, 211, 153, 0.3)',
               }}>
-              <Zap className="w-3 h-3 text-emerald-400" />
+              <Zap className="w-2.5 h-2.5 text-emerald-500" />
               HEALTH: 100%
             </div>
 
@@ -242,8 +301,8 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
             <div className="absolute w-2.5 h-2.5 rounded-full animate-ping top-28 left-24"
               style={{ background: '#fb923c', boxShadow: '0 0 8px #fb923c', animationDelay: '1.2s' }} />
 
-            {/* 3D Cube (Enlarged 25%) */}
-            <div className="relative w-56 h-56 animate-rotator cursor-pointer"
+            {/* 3D Cube (Enlarged + Brightened 15% with Custom Box Shadow) */}
+            <div className="relative w-56 h-56 animate-rotator cursor-pointer filter brightness-110"
               style={{ transformStyle: 'preserve-3d' }}>
 
               {/* FRONT */}
