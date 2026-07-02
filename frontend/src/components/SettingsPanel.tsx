@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../api';
+import { api, API_BASE_URL } from '../api';
 import type { SettingsData } from '../api';
 import { Sliders, ShieldAlert, Cpu, Activity, CheckCircle, ExternalLink, Lock, Download } from 'lucide-react';
 
@@ -45,8 +45,8 @@ export const SettingsPanel: React.FC<SettingsPanelProps> = ({ role }) => {
     }
   };
 
-  const prometheusUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/prometheus`;
-  const downloadUrl = `${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/agents/download`;
+ const prometheusUrl = `${API_BASE_URL}/prometheus`;
+  const downloadUrl = `${API_BASE_URL}/agents/download`;
 
   return (
     <div className="space-y-6">
