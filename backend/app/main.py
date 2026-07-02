@@ -28,15 +28,24 @@ app = FastAPI(
     lifespan=lifespan
 )
 
+
 # Enable CORS for frontend interface
+# Restrict to known frontend origins instead of a wildcard, since allow_credentials=True
+# combined with allow_origins=["*"] is invalid per the CORS spec and rejected by browsers
+# for credentialed requests. Add any additional preview/staging domains as needed.
+ALLOWED_ORIGINS = [
+    "https://verde-kub.vercel.app",
+    "http://localhost:5173",  # local Vite dev server
+    "http://localhost:3000",  # docker-compose frontend
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this to the frontend domain
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Register routers
 app.include_router(containers.router)
 app.include_router(metrics.router)
