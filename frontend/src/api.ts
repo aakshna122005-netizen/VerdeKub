@@ -1,7 +1,18 @@
 import axios from 'axios';
 
 // Backend endpoint configuration (falls back to localhost in dev, or relative path in production containers)
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+// Exported so other components (e.g. SettingsPanel) don't duplicate this fallback logic.
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+// Warn loudly in production if the real backend URL was never configured, so this
+// doesn't silently fail as an unexplained "Could not connect to backend" screen.
+if (import.meta.env.PROD && !import.meta.env.VITE_API_URL) {
+  console.warn(
+    '[VerdeKube] VITE_API_URL is not set. Falling back to http://localhost:8000, ' +
+    'which will not work in a deployed environment. Set VITE_API_URL in your Vercel ' +
+    'project environment variables to your deployed backend URL and redeploy.'
+  );
+}
 
 const client = axios.create({
   baseURL: API_BASE_URL,
