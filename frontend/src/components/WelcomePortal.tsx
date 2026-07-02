@@ -149,123 +149,188 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({ onEnter }) => {
           </div>
         </div>
 
-        {/* Right Column: 3D Cube */}
+        {/* Right Column: 3D Cube with Network Lines and AI Nodes */}
         <div className="lg:col-span-6 flex justify-center items-center py-8">
-          <div className="relative w-96 h-96 flex items-center justify-center" style={{ perspective: '1000px' }}>
+          <div className="relative w-[480px] h-[480px] flex items-center justify-center" style={{ perspective: '1200px' }}>
+
+            {/* ── Animated Network Lines (SVG) ── */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-60" viewBox="0 0 480 480">
+              {/* Pulsing connections between nodes and the cube */}
+              <line x1="80" y1="120" x2="240" y2="240" stroke="rgba(139,92,246,0.3)" strokeWidth="1.5" strokeDasharray="5,5" className="animate-pulse" />
+              <line x1="400" y1="100" x2="240" y2="240" stroke="rgba(6,182,212,0.3)" strokeWidth="1.5" strokeDasharray="5,5" className="animate-pulse" />
+              <line x1="380" y1="360" x2="240" y2="240" stroke="rgba(251,146,60,0.3)" strokeWidth="1.5" strokeDasharray="5,5" className="animate-pulse" />
+              <line x1="100" y1="380" x2="240" y2="240" stroke="rgba(236,72,153,0.3)" strokeWidth="1.5" strokeDasharray="5,5" className="animate-pulse" />
+              
+              {/* Circuit paths with moving dash animation */}
+              <path d="M 80 120 C 150 80, 330 60, 400 100" fill="none" stroke="rgba(6,182,212,0.25)" strokeWidth="1.5" strokeDasharray="8,8" className="animate-dash" style={{ strokeDashoffset: 100, animation: 'dash 15s linear infinite' }} />
+              <path d="M 100 380 C 150 420, 320 430, 380 360" fill="none" stroke="rgba(139,92,246,0.25)" strokeWidth="1.5" strokeDasharray="8,8" className="animate-dash" style={{ strokeDashoffset: 100, animation: 'dash 15s linear infinite' }} />
+            </svg>
 
             {/* Outer glow */}
-            <div className="absolute w-72 h-72 rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+            <div className="absolute w-96 h-96 rounded-full"
+              style={{ background: 'radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
 
             {/* Orbit Ring 1 — violet */}
-            <div className="absolute w-80 h-80 rounded-full border animate-spin"
-              style={{ borderColor: 'rgba(139,92,246,0.25)', transform: 'rotateX(75deg) rotateY(15deg)', animationDuration: '12s' }} />
+            <div className="absolute w-[360px] h-[360px] rounded-full border animate-spin"
+              style={{ borderColor: 'rgba(139,92,246,0.2)', transform: 'rotateX(75deg) rotateY(15deg)', animationDuration: '14s' }} />
 
             {/* Orbit Ring 2 — cyan */}
-            <div className="absolute w-72 h-72 rounded-full border animate-spin"
-              style={{ borderColor: 'rgba(6,182,212,0.2)', transform: 'rotateX(60deg) rotateY(-30deg)', animationDuration: '8s', animationDirection: 'reverse' }} />
+            <div className="absolute w-[320px] h-[320px] rounded-full border animate-spin"
+              style={{ borderColor: 'rgba(6,182,212,0.18)', transform: 'rotateX(60deg) rotateY(-30deg)', animationDuration: '9s', animationDirection: 'reverse' }} />
 
-            {/* Orbit Ring 3 — orange */}
-            <div className="absolute w-64 h-64 rounded-full border animate-spin"
-              style={{ borderColor: 'rgba(251,146,60,0.15)', transform: 'rotateX(45deg) rotateY(45deg)', animationDuration: '16s' }} />
+            {/* ── Floating AI Nodes ── */}
+            {/* Node 1: AI Anomaly */}
+            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
+              style={{
+                top: '90px', left: '30px',
+                background: 'rgba(15, 5, 30, 0.85)',
+                borderColor: 'rgba(139, 92, 246, 0.6)',
+                boxShadow: '0 0 15px rgba(139, 92, 246, 0.4)',
+                animationDuration: '3.5s'
+              }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-ping" />
+              ML_ANOMALY: ACTIVE
+            </div>
 
-            {/* Orbiting ping dots */}
-            <div className="absolute w-3 h-3 rounded-full animate-ping top-8 right-16"
+            {/* Node 2: Eco Governor */}
+            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
+              style={{
+                top: '70px', right: '20px',
+                background: 'rgba(5, 15, 30, 0.85)',
+                borderColor: 'rgba(6, 182, 212, 0.6)',
+                boxShadow: '0 0 15px rgba(6, 182, 212, 0.4)',
+                animationDuration: '4s',
+                animationDelay: '1s'
+              }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              GOVERNOR: ECO
+            </div>
+
+            {/* Node 3: Carbon Saved */}
+            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
+              style={{
+                bottom: '80px', right: '30px',
+                background: 'rgba(30, 10, 5, 0.85)',
+                borderColor: 'rgba(251, 146, 60, 0.6)',
+                boxShadow: '0 0 15px rgba(251, 146, 60, 0.4)',
+                animationDuration: '4.5s',
+                animationDelay: '0.5s'
+              }}>
+              <Leaf className="w-3 h-3 text-orange-400" />
+              CO2_SAVED: +128g
+            </div>
+
+            {/* Node 4: Node Health */}
+            <div className="absolute z-20 flex items-center gap-2 px-3 py-1.5 rounded-xl border text-[10px] font-bold font-mono animate-bounce"
+              style={{
+                bottom: '60px', left: '40px',
+                background: 'rgba(5, 20, 10, 0.85)',
+                borderColor: 'rgba(52, 211, 153, 0.6)',
+                boxShadow: '0 0 15px rgba(52, 211, 153, 0.4)',
+                animationDuration: '3.8s',
+                animationDelay: '1.5s'
+              }}>
+              <Zap className="w-3 h-3 text-emerald-400" />
+              HEALTH: 100%
+            </div>
+
+            {/* Orbiting particles */}
+            <div className="absolute w-3.5 h-3.5 rounded-full animate-ping top-16 right-28"
               style={{ background: '#a78bfa', boxShadow: '0 0 12px #a78bfa' }} />
-            <div className="absolute w-2 h-2 rounded-full animate-ping bottom-12 left-10"
+            <div className="absolute w-2 h-2 rounded-full animate-ping bottom-20 left-20"
               style={{ background: '#67e8f9', boxShadow: '0 0 8px #67e8f9', animationDelay: '0.5s' }} />
-            <div className="absolute w-2 h-2 rounded-full animate-ping top-20 left-16"
-              style={{ background: '#fb923c', boxShadow: '0 0 8px #fb923c', animationDelay: '1s' }} />
+            <div className="absolute w-2.5 h-2.5 rounded-full animate-ping top-28 left-24"
+              style={{ background: '#fb923c', boxShadow: '0 0 8px #fb923c', animationDelay: '1.2s' }} />
 
-            {/* 3D Cube */}
-            <div className="relative w-44 h-44 animate-rotator cursor-pointer"
+            {/* 3D Cube (Enlarged 25%) */}
+            <div className="relative w-56 h-56 animate-rotator cursor-pointer"
               style={{ transformStyle: 'preserve-3d' }}>
 
               {/* FRONT */}
-              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-4 border"
+              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-5 border"
                 style={{
-                  transform: 'translateZ(88px)',
+                  transform: 'translateZ(112px)',
                   background: 'linear-gradient(135deg, rgba(15,5,40,0.95), rgba(30,10,60,0.9))',
                   borderColor: 'rgba(139,92,246,0.6)',
-                  boxShadow: 'inset 0 0 30px rgba(139,92,246,0.15), 0 0 20px rgba(139,92,246,0.2)',
+                  boxShadow: 'inset 0 0 35px rgba(139,92,246,0.2), 0 0 25px rgba(139,92,246,0.25)',
                 }}>
                 <div className="flex justify-between items-center">
-                  <Cpu className="w-6 h-6 animate-pulse" style={{ color: '#a78bfa' }} />
-                  <span className="text-[8px] px-2 py-0.5 rounded font-mono font-bold border"
+                  <Cpu className="w-7 h-7 animate-pulse" style={{ color: '#a78bfa' }} />
+                  <span className="text-[9px] px-2.5 py-0.5 rounded font-mono font-bold border"
                     style={{ color: '#c4b5fd', background: 'rgba(139,92,246,0.15)', borderColor: 'rgba(139,92,246,0.3)' }}>CORE-01</span>
                 </div>
-                <div className="space-y-1">
-                  <div className="h-1.5 w-full rounded-full overflow-hidden" style={{ background: 'rgba(139,92,246,0.15)' }}>
+                <div className="space-y-1.5">
+                  <div className="h-2 w-full rounded-full overflow-hidden" style={{ background: 'rgba(139,92,246,0.15)' }}>
                     <div className="h-full rounded-full animate-pulse" style={{ width: '75%', background: 'linear-gradient(to right, #7c3aed, #67e8f9)' }} />
                   </div>
-                  <div className="flex justify-between text-[8px] font-mono" style={{ color: '#64748b' }}>
+                  <div className="flex justify-between text-[9px] font-mono" style={{ color: '#64748b' }}>
                     <span>CPU LOAD</span><span style={{ color: '#a78bfa' }}>75%</span>
                   </div>
                 </div>
               </div>
 
               {/* BACK */}
-              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-4 border"
+              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-5 border"
                 style={{
-                  transform: 'rotateY(180deg) translateZ(88px)',
+                  transform: 'rotateY(180deg) translateZ(112px)',
                   background: 'linear-gradient(135deg, rgba(5,15,30,0.95), rgba(5,25,45,0.9))',
                   borderColor: 'rgba(6,182,212,0.5)',
-                  boxShadow: 'inset 0 0 30px rgba(6,182,212,0.1)',
+                  boxShadow: 'inset 0 0 35px rgba(6,182,212,0.15)',
                 }}>
                 <div className="flex justify-between items-center">
-                  <Shield className="w-6 h-6" style={{ color: '#67e8f9' }} />
-                  <span className="text-[8px] px-2 py-0.5 rounded font-mono font-bold border"
+                  <Shield className="w-7 h-7" style={{ color: '#67e8f9' }} />
+                  <span className="text-[9px] px-2.5 py-0.5 rounded font-mono font-bold border"
                     style={{ color: '#67e8f9', background: 'rgba(6,182,212,0.1)', borderColor: 'rgba(6,182,212,0.3)' }}>ML-DECT</span>
                 </div>
-                <div className="text-[10px] font-semibold leading-relaxed" style={{ color: '#94a3b8' }}>
+                <div className="text-[11px] font-semibold leading-relaxed" style={{ color: '#94a3b8' }}>
                   Isolation Forest:<br />
                   <span style={{ color: '#34d399' }} className="font-bold">✓ NORMAL</span>
                 </div>
               </div>
 
               {/* RIGHT */}
-              <div className="absolute inset-0 rounded-2xl flex flex-col justify-center items-center p-4 border"
+              <div className="absolute inset-0 rounded-2xl flex flex-col justify-center items-center p-5 border"
                 style={{
-                  transform: 'rotateY(90deg) translateZ(88px)',
+                  transform: 'rotateY(90deg) translateZ(112px)',
                   background: 'linear-gradient(135deg, rgba(10,5,30,0.95), rgba(20,10,50,0.9))',
                   borderColor: 'rgba(251,146,60,0.4)',
-                  boxShadow: 'inset 0 0 25px rgba(251,146,60,0.08)',
+                  boxShadow: 'inset 0 0 30px rgba(251,146,60,0.1)',
                 }}>
-                <Globe className="w-9 h-9 mb-2 animate-spin" style={{ color: '#fb923c', animationDuration: '10s' }} />
-                <div className="text-[9px] font-bold uppercase tracking-widest" style={{ color: '#fb923c' }}>ECO ACTIVE</div>
+                <Globe className="w-11 h-11 mb-2 animate-spin" style={{ color: '#fb923c', animationDuration: '10s' }} />
+                <div className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#fb923c' }}>ECO ACTIVE</div>
               </div>
 
               {/* LEFT */}
-              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-4 border"
+              <div className="absolute inset-0 rounded-2xl flex flex-col justify-between p-5 border"
                 style={{
-                  transform: 'rotateY(-90deg) translateZ(88px)',
+                  transform: 'rotateY(-90deg) translateZ(112px)',
                   background: 'rgba(5,5,20,0.95)',
                   borderColor: 'rgba(236,72,153,0.35)',
                 }}>
-                <div className="text-[8px] font-mono" style={{ color: '#64748b' }}>METRICS OUTPUT</div>
+                <div className="text-[9px] font-mono" style={{ color: '#64748b' }}>METRICS OUTPUT</div>
                 <div>
-                  <div className="text-lg font-black font-mono" style={{ color: '#f472b6' }}>36.5 g/h</div>
-                  <div className="text-[8px] font-bold uppercase tracking-wider mt-0.5" style={{ color: '#64748b' }}>Active Emission</div>
+                  <div className="text-xl font-black font-mono" style={{ color: '#f472b6' }}>36.5 g/h</div>
+                  <div className="text-[9px] font-bold uppercase tracking-wider mt-0.5" style={{ color: '#64748b' }}>Active Emission</div>
                 </div>
               </div>
 
               {/* TOP */}
               <div className="absolute inset-0 rounded-2xl flex items-center justify-center border"
                 style={{
-                  transform: 'rotateX(90deg) translateZ(88px)',
+                  transform: 'rotateX(90deg) translateZ(112px)',
                   background: 'rgba(10,5,30,0.9)',
                   borderColor: 'rgba(139,92,246,0.3)',
                 }}>
-                <div className="w-12 h-12 rounded-full border flex items-center justify-center"
+                <div className="w-14 h-14 rounded-full border flex items-center justify-center"
                   style={{ borderColor: 'rgba(139,92,246,0.4)' }}>
-                  <div className="w-5 h-5 rounded-full animate-ping" style={{ background: 'rgba(139,92,246,0.5)' }} />
+                  <div className="w-6 h-6 rounded-full animate-ping" style={{ background: 'rgba(139,92,246,0.5)' }} />
                 </div>
               </div>
 
               {/* BOTTOM */}
               <div className="absolute inset-0 rounded-2xl border"
                 style={{
-                  transform: 'rotateX(-90deg) translateZ(88px)',
+                  transform: 'rotateX(-90deg) translateZ(112px)',
                   background: 'rgba(5,2,15,0.95)',
                   borderColor: 'rgba(139,92,246,0.2)',
                 }} />
