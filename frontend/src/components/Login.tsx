@@ -119,23 +119,7 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
           </button>
         </form>
 
-        <div className="mt-8 pt-6 border-t border-slate-800/60 text-center">
-          <p className="text-xs text-slate-500">Quick Fill Demo Roles:</p>
-          <div className="flex gap-2 justify-center mt-3">
-            <button
-              onClick={() => { setUsername('susty-admin'); setPassword('admin123'); }}
-              className="text-xs px-2.5 py-1 bg-slate-950 hover:bg-slate-800 text-emerald-400 border border-slate-800 rounded-lg transition-all"
-            >
-              Admin Role
-            </button>
-            <button
-              onClick={() => { setUsername('susty-viewer'); setPassword('viewer123'); }}
-              className="text-xs px-2.5 py-1 bg-slate-950 hover:bg-slate-800 text-blue-400 border border-slate-800 rounded-lg transition-all"
-            >
-              Viewer Role
-            </button>
-          </div>
-        </div>
+
       </div>
     </div>
   );

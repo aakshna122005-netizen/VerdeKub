@@ -28,20 +28,16 @@
 
 /* 3D Rotator Animation and Utilities */
 @keyframes rotator {
-  0% {
-    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  0%, 100% {
+    transform: rotateX(12deg) rotateY(-22deg) rotateZ(-4deg);
   }
-  100% {
-    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  50% {
+    transform: rotateX(-12deg) rotateY(22deg) rotateZ(4deg);
   }
 }
 
 .animate-rotator {
-  animation: rotator 20s infinite linear;
-}
-
-.animate-rotator:hover {
-  animation-play-state: paused;
+  animation: rotator 10s ease-in-out infinite;
 }
 
 .backface-visible {
